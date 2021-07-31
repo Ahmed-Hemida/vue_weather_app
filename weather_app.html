@@ -8,14 +8,15 @@
       <link rel="stylesheet" href="weather_app_style.css"> </link>  
       <script type="text/javascript" src="data_set_1.js"></script>
      <script type="text/javascript" src="GeoLocation_cities_id.js"></script>
-    <head>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+     </head>
 
 <body id="body">
     <div id="paper">
             <div id="header">
                         <div class='right'>
                             <label class="switch mr-5 mt-3 text-white">
-                                <input type="checkbox" id="import_file" class="" onchange="send_permission('import_file')">
+                                <input type="checkbox"  v-model="vm" onclick="{{vm.degree()}}" >
                                 
                                 <span class="slider round ">    
                                     <span class='left letter ml-1'>C</span>
@@ -38,6 +39,7 @@
                     </div>
                     <div id="" class=' box'>
                             <from>
+                                <br>
                                 <label style="display:block;margin-left: 10px;">Enter city</label>
                             <input list="cities_list"type="search" id="city_input" placeholder=" Enter Your country">
                             
@@ -58,7 +60,7 @@
                             <div class='box'>
                                     <label style="margin-left: 10px;">{{city_input}} \{{subcountry}}</label>
                                     <div id='temperature'>
-                                            <div class="left"style="font-size: 100px;">
+                                            <div class="left temp_font" >
                                                 {{day_1.temp}}<sup>o</sup>
                                             </div>
                                             <div class="right" v-html="day_1.weather_img">
@@ -140,6 +142,7 @@
         cities_id: GeoLocation_cities_id,
         city_input:"",
         subcountry:"",
+        degree_f:false,
         city_weather:{},
         day_1:{
             temp:"",
@@ -235,6 +238,7 @@
                                 this.show_body=true;
 
                                 this.subcountry = temp.subcountry;
+                                // this.degree();
                               
                             }).catch(err=> this.error_message=this.response.message,(this.show_body=false));
                         }
@@ -264,7 +268,38 @@
                                       day.weather_img=this.weather_img.Clear;
 
             }
-          }
+          },
+            degree:function(){
+                if(!this.degree_f){
+                    // 273
+                        this.day_1.temp_max=273-this.day_1.temp_max;
+                        this.day_1.temp_min=273-this.day_1.temp_min;
+                        this.day_1.temp=273-this.day_1.temp;
+                        this.day_2.temp_max=273-this.day_2.temp_max;
+                        this.day_2.temp_min=273-this.day_2.temp_min;
+
+                        this.day_3.temp_max=273-this.day_3.temp_max;
+                        this.day_3.temp_min=273-this.day_3.temp_min;
+
+                        this.day_4.temp_max=273-this.day_4.temp_max;
+                        this.day_4.temp_min=273-this.day_4.temp_min;
+                        this.degree=!this.degree_f;
+                    }else{
+                        this.day_1.temp_max=273+this.day_1.temp_max;
+                        this.day_1.temp_min=273+this.day_1.temp_min;
+                        this.day_1.temp=273+this.day_1.temp;
+                        this.day_2.temp_max=273+this.day_2.temp_max;
+                        this.day_2.temp_min=273+this.day_2.temp_min;
+
+                        this.day_3.temp_max=273+this.day_3.temp_max;
+                        this.day_3.temp_min=273+this.day_3.temp_min;
+                        
+                        this.day_4.temp_max=273+this.day_4.temp_max;
+                        this.day_4.temp_min=273+this.day_4.temp_min;
+                        this.degree=!this.degree_f;
+                    }
+
+            }
         }
        
     });
