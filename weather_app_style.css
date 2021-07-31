@@ -126,8 +126,9 @@ overflow: hidden;
   width: 10%;
   border: none;
   border-radius: 10px;
-   outline: none;
+  
    }
+   button:focus{outline: 0;}
   #temperature img {
       height: 200px;
       width: 200px;
