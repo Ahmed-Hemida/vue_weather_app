@@ -1,0 +1,194 @@
+body{
+    /* background-repeat:none; */
+  
+  background: linear-gradient( rgb(59, 67, 204),rgb(7, 10, 67));
+  background-size: 100%;
+  width: 100%;
+  /* height: 100%; */
+
+/* Center and scale the image nicely */
+background-position: center;
+background-repeat: no-repeat;
+height: 923px;
+padding: 5%;
+color: rgb(255, 255, 255);
+overflow: hidden;
+ 
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 35px;
+  height: 17px;
+  border: 1px solid rgb(139, 144, 226);
+  border-radius: 30px;
+  }
+
+  .switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+  }
+
+  .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background-color: #ff1a1a; */
+  -webkit-transition: .4s;
+  transition: .4s;
+  }
+
+  .slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 4px;
+  top: 1px;
+  /* bottom: 4px; */
+  background-color: rgb(139, 144, 226);
+  -webkit-transition: .4s;
+  transition: .4s;
+  }
+
+  /* input:checked + .slider {
+  background-color:  #00ff00;
+  } */
+
+  input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+  border-radius: 17px;
+  }
+
+  .slider.round:before {
+  border-radius: 50%;
+  }
+  .letter{
+      font-size: 10px;
+      top:0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      color:rgb(139, 144, 226);
+      font-weight: bold;
+  }
+  #header{
+     height: 10%;
+     padding-bottom: 10px;
+
+  }
+  #appBody{
+      height: 80;
+     
+  }
+  .right{
+      float:right;
+  }
+  .left{
+      float:left;
+  }
+  .center{
+      float:center;
+  }
+  .box{
+      padding: 3%;
+  }
+  .time_data{
+       font-size:30px;
+  }
+  input {
+  background-color: rgb(7, 10, 67);
+  color: white;
+  width: 28%;
+  border: none;
+  border-radius: 10px;
+   outline: none;
+  caret-color : rgb(131, 136, 221);
+   }
+ 
+   ::placeholder { /* Internet Explorer 10-11 */
+      color: rgb(139, 144, 226);
+      /* color:red; */
+      }
+   button {
+  background-color: rgb(35, 40, 145);
+  color: white;
+  width: 10%;
+  border: none;
+  border-radius: 10px;
+   outline: none;
+   }
+  #temperature img {
+      height: 200px;
+      width: 200px;
+  }
+  @keyframes up_r{
+  0%   {top:0px;bottom:0px;}
+  25%  {top:100px;bottom:0px;}
+  50%  {top:0px;bottom:100px;}
+  75%  {top:100px;bottom:0px;}
+  100% {top:0px;bottom:100px;}
+  }
+  #up_row{
+      position: relative; 
+      animation-name: up_r;
+      animation-duration: 4s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;  
+  }
+
+  #future_weather{
+
+      background-color: rgb(17, 1, 75);
+      color: rgb(255, 255, 255); 
+      height:30%;
+      width: 70%;
+      margin-left: 12%;
+      margin-top: 7%;
+      border-radius: 10px;
+
+  } 
+   #future_weather img {
+      height: 60px;
+      width:auto;
+      padding-left:20%;
+      display:block;
+  }
+
+      .block{
+          display:block;
+      }
+      .inline-block{
+          display:inline-block;
+          margin-left:13%;
+          margin-top:5%;
+      }
+      .suptamp img{
+        height:0px;
+        width:0px;
+      }
+ 
+
+@media only screen and (max-width: 650px) {
+
+    #body{
+        height: 600px;
+        
+    }
+ 
+    .right{
+         float:left;
+        margin: 5px;
+    }
+ 
+}

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+     <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">    
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+
+      <link rel="stylesheet" href="weather_app_style.css"> </link>  
+      <script type="text/javascript" src="data_set_1.js"></script>
+     <script type="text/javascript" src="GeoLocation_cities_id.js"></script>
+    <head>
+
+<body id="body">
+    <div id="paper">
+            <div id="header">
+                        <div class='right'>
+                            <label class="switch mr-5 mt-3 text-white">
+                                <input type="checkbox" id="import_file" class="" onchange="send_permission('import_file')">
+                                
+                                <span class="slider round ">    
+                                    <span class='left letter ml-1'>C</span>
+                                    <span class='right letter mr-1' >F</span>
+                                </span>
+                            
+                            </label>
+                        </div>
+             </div>
+            <br>
+            <div id="appBody">
+                    <div class=' box'>
+                            <div class='left time_data'>
+                            {{date}}    
+                            </div>
+                            <div class='right time_data'>
+                            {{time}}
+                            
+                            </div>
+                    </div>
+                    <div id="" class=' box'>
+                            <from>
+                                <label style="display:block;margin-left: 10px;">Enter city</label>
+                            <input list="cities_list"type="search" id="city_input" placeholder=" Enter Your country">
+                            
+                            <datalist id="cities_list">
+                                <option v-for="itam in cities_id" v-bind:value="itam.name "style="max-height: 10px;">
+                            </datalist>
+                            <button v-on:click="http_request()" > search</button> 
+                            </from>
+                            <div style="color:red;">{{error_message}}</div>
+                    </div>
+                   
+                 
+                    <div v-if="!show_body" class='box'>
+                           <img id="up_row"src="https://img.icons8.com/fluency/96/000000/up.png"/>
+                    </div>
+                    
+                    <div v-if="show_body">
+                            <div class='box'>
+                                    <label style="margin-left: 10px;">{{city_input}} \{{subcountry}}</label>
+                                    <div id='temperature'>
+                                            <div class="left"style="font-size: 100px;">
+                                                {{day_1.temp}}<sup>o</sup>
+                                            </div>
+                                            <div class="right" v-html="day_1.weather_img">
+                                            </div>
+                                    </div>
+                            </div> 
+                    
+                         <div id="future_weather" class="left">
+                                    <div id="menu_weather">
+                                        <div class="inline-block">
+                                          
+                                                {{day_2.date}}
+                                             
+                                                <div class="" v-html="day_2.weather_img"></div>
+                                                <div class="suptemp">
+                                                    {{day_2.temp_max}}
+                                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                                            width="20" height="20"
+                                                            viewBox="0 0 172 172"
+                                                            style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M86,7.16667l-28.66667,28.66667h21.5v129h14.33333v-129h21.5z"></path></g></g></svg>
+                                                                                                                {{day_2.temp_min}}
+                                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                                    width="20" height="20"
+                                                    viewBox="0 0 172 172"
+                                                    style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M78.83333,7.16667v129h-21.5l28.66667,28.66667l28.66667,-28.66667h-21.5v-129z"></path></g></g></svg>
+                                                    
+                                                </div>
+                                         
+                                        </div>
+                                        <div class="inline-block">
+                                                {{day_3.date}}
+                                                <div class="" v-html="day_3.weather_img"></div>
+                                                <div class="suptemp">
+                                                    {{day_3.temp_max}}
+                                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                                            width="20" height="20"
+                                                            viewBox="0 0 172 172"
+                                                            style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M86,7.16667l-28.66667,28.66667h21.5v129h14.33333v-129h21.5z"></path></g></g></svg>
+                                                            {{day_3.temp_min}}
+                                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                                    width="20" height="20"
+                                                    viewBox="0 0 172 172"
+                                                    style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M78.83333,7.16667v129h-21.5l28.66667,28.66667l28.66667,-28.66667h-21.5v-129z"></path></g></g></svg>
+                                                    
+                                                </div>
+                                        </div>
+                                        <div class="inline-block" >
+                                           
+                                                {{day_4.date}}
+                                                
+                                                <div  v-html="day_4.weather_img"></div>
+                                                    <div class="suptemp">
+                                                    {{day_4.temp_max}}
+                                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                                            width="20" height="20"
+                                                            viewBox="0 0 172 172"
+                                                            style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M86,7.16667l-28.66667,28.66667h21.5v129h14.33333v-129h21.5z"></path></g></g></svg>
+                                                                                                                {{day_4.temp_min}}
+                                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                                    width="20" height="20"
+                                                    viewBox="0 0 172 172"
+                                                    style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M78.83333,7.16667v129h-21.5l28.66667,28.66667l28.66667,-28.66667h-21.5v-129z"></path></g></g></svg>
+                                                    
+                                                </div>
+                                            </div>
+                                    </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+<script type = "text/javascript">
+ 
+    var vm = new Vue({
+       el: '#paper',
+       data: {
+        cities_json_array: cities,
+        cities_id: GeoLocation_cities_id,
+        city_input:"",
+        subcountry:"",
+        city_weather:{},
+        day_1:{
+            temp:"",
+            temp_max:"",
+            temp_min:"",
+            humidity:"",
+            weather_main:"",
+            date:""
+
+        },
+        day_2:{
+            temp_max:"",
+            temp_min:"",
+            weather_main:"",
+            weather_img:"",
+            date:""
+        },
+        day_3:{
+            temp_max:"",
+            temp_min:"",
+            weather_main:"",
+            weather_img:"",
+            date:""
+        },
+        day_4:{
+            temp_max:"",
+            temp_min:"",
+            weather_main:"",
+            date:"" ,
+            weather_img:"",
+        },
+        weather_img:{
+            Clouds:'<img src="https://img.icons8.com/bubbles/100/000000/clouds.png"/>',
+             Windy:'<img src="https://img.icons8.com/color/480/000000/windy-weather--v2.png"/>',
+             Clear:'<img src="https://img.icons8.com/doodle/480/000000/sun--v1.png"/>',
+             Suny:'<img src="https://img.icons8.com/doodle/480/000000/sun--v1.png"/>',
+             Rain:'<img src="https://img.icons8.com/clouds/480/000000/rain.png"/>',
+        },
+        error_message:"",
+        show_body:false,
+        id:359576,
+        appid:"855105f0403ddbf3d9179afa6b18b921",
+        date:"",
+        time:'',
+        response:{}
+       }, 
+      
+       methods : {
+            http_request:function(){
+                this.city_input = document.getElementById("city_input").value;
+                let temp= this.cities_id.find(function(item){
+                    return item.name ==this.city_input.value;
+                });
+                if(!this.city_input){
+                    this.error_message="your search input is empty ";
+                    this.show_body=false;
+                }else if(!temp){
+                   this.error_message="this country you inter is not in our data";
+                   this.show_body=false;
+                }else{
+
+                           this.id=temp.geonameid;
+                            fetch("https://api.openweathermap.org/data/2.5/forecast?id="+this.id+"&appid="+this.appid)
+                            .then(res => res.json()).then(data => {
+                                this.error_message="";
+                                this.response=data
+                                this.day_1.temp=this.response.list[0].main.temp;
+                                this.day_1.temp_min=this.response.list[0].main.temp_min;
+                                this.day_1.temp_max=this.response.list[0].main.temp_max;
+                                this.day_1.humidity=this.response.list[0].main.humidity;
+                                this.day_1.weather_main=this.response.list[0].weather[0].main;
+                                this.day_1.date=this.response.list[0].dt_txt;
+                             this.img_weather(this.day_1);
+                        
+                                this.day_2.temp_min=this.response.list[9].main.temp_min;
+                                this.day_2.temp_max=this.response.list[9].main.temp_max;
+                                this.day_2.weather_main=this.response.list[9].weather[0].main;
+                                this.day_2.date=this.response.list[9].dt_txt; 
+                                this.img_weather(this.day_2);
+
+                                this.day_3.temp_min=this.response.list[25].main.temp_min;
+                                this.day_3.temp_max=this.response.list[25].main.temp_max;
+                                this.day_3.weather_main=this.response.list[25].weather[0].main;
+                                this.day_3.date=this.response.list[25].dt_txt; 
+                                this.img_weather(this.day_3);
+
+                                this.day_4.temp_min=this.response.list[32].main.temp_min;
+                                this.day_4.temp_max=this.response.list[32].main.temp_max;
+                                this.day_4.weather_main=this.response.list[32].weather[0].main;
+                                this.day_4.date=this.response.list[32].dt_txt; 
+                                this.img_weather(this.day_4);
+
+                                this.show_body=true;
+
+                                this.subcountry = temp.subcountry;
+                              
+                            }).catch(err=> this.error_message=this.response.message,(this.show_body=false));
+                        }
+            },
+            dateBuilder: function () {
+                    let d = new Date();
+                    this.time = d.toLocaleTimeString();
+                    this.date=d.toDateString();
+
+            },
+            img_weather: function(day){
+                switch(day.weather_main){
+                                    case "Clouds":
+                                       day.weather_img=this.weather_img.Clouds;
+                                    break;
+                                    case "clear sky":
+                                    case "Clear":
+                                       day.weather_img=this.weather_img.Clear;
+                                    break;
+                                    case "Rain":
+                                       day.weather_img=this.weather_img.Rain;
+                                    break;
+                                    case "Suny":
+                                       day.weather_img=this.weather_img.Suny;
+                                    break;
+                                    default:
+                                      day.weather_img=this.weather_img.Clear;
+
+            }
+          }
+        }
+       
+    });
+   
+vm.dateBuilder();
+ </script>
+</body>
+</html>
