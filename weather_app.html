@@ -16,7 +16,7 @@
             <div id="header">
                         <div class='right'>
                             <label class="switch mr-5 mt-3 text-white">
-                                <input type="checkbox"  v-model="vm" onclick="{{vm.degree()}}" >
+                                <input type="checkbox"  v-model="vm" @change="{{vm.degree()}}" >
                                 
                                 <span class="slider round ">    
                                     <span class='left letter ml-1'>C</span>
