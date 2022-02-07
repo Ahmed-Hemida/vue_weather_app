@@ -15,6 +15,14 @@ color: rgb(255, 255, 255);
 /*overflow: hidden;*/
  
 }
+::-webkit-scrollbar {
+  width: 5px;
+    height: 5px;
+}
+::-webkit-scrollbar-thumb{
+  background: Blue;
+    border-radius: 5px;
+}
 .switch {
   position: relative;
   display: inline-block;
