@@ -144,6 +144,7 @@
         subcountry:"",
         degree_f:false,
         city_weather:{},
+       dateOdj :new Date(),
         day_1:{
             temp:"",
             temp_max:"",
@@ -244,10 +245,10 @@
                         }
             },
             dateBuilder: function () {
-                    let d = new Date();
-                    this.time = d.toLocaleTimeString();
-                    this.date=d.toDateString();
-                 this.dateBuilder();
+                   
+                    this.time = this.dateOdj.toLocaleTimeString();
+                    this.date=this.dateOdj.toDateString();
+               
 
             },
             img_weather: function(day){
