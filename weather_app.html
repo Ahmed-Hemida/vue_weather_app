@@ -144,7 +144,8 @@
         subcountry:"",
         degree_f:false,
         city_weather:{},
-       dateOdj :new Date(),
+      
+       interval: null,
         day_1:{
             temp:"",
             temp_max:"",
@@ -245,9 +246,11 @@
                         }
             },
             dateBuilder: function () {
-                   
-                    this.time = this.dateOdj.toLocaleTimeString();
-                    this.date=this.dateOdj.toDateString();
+                  this.interval setInterval(() => {
+                       let dateOdj :new Date(),
+                    this.time = dateOdj.toLocaleTimeString();
+                    this.date= dateOdj.toDateString();
+                  }, 1000);
                
 
             },
