@@ -268,25 +268,25 @@
             .then(res => res.json()).then(data => {
             this.error_message="";
             this.response=data
-            this.day_1.temp=this.response.list[0].main.temp;
-            this.day_1.temp_min=this.response.list[0].main.temp_min;
-            this.day_1.temp_max=this.response.list[0].main.temp_max;
+            this.day_1.temp=this.response.list[0].main.temp-273;
+            this.day_1.temp_min=this.response.list[0].main.temp_min-273;
+            this.day_1.temp_max=this.response.list[0].main.temp_max-273;
             this.day_1.humidity=this.response.list[0].main.humidity;
             this.day_1.weather_main=this.response.list[0].weather[0].main;
             this.day_1.date=this.response.list[0].dt_txt;
             this.img_weather(this.day_1);
-            this.day_2.temp_min=this.response.list[9].main.temp_min;
-            this.day_2.temp_max=this.response.list[9].main.temp_max;
+            this.day_2.temp_min=this.response.list[9].main.temp_min-273;
+            this.day_2.temp_max=this.response.list[9].main.temp_max-273;
             this.day_2.weather_main=this.response.list[9].weather[0].main;
             this.day_2.date=this.response.list[9].dt_txt;
             this.img_weather(this.day_2);
-            this.day_3.temp_min=this.response.list[25].main.temp_min;
-            this.day_3.temp_max=this.response.list[25].main.temp_max;
+            this.day_3.temp_min=this.response.list[25].main.temp_min-273;
+            this.day_3.temp_max=this.response.list[25].main.temp_max-273;
             this.day_3.weather_main=this.response.list[25].weather[0].main;
             this.day_3.date=this.response.list[25].dt_txt;
             this.img_weather(this.day_3);
-            this.day_4.temp_min=this.response.list[32].main.temp_min;
-            this.day_4.temp_max=this.response.list[32].main.temp_max;
+            this.day_4.temp_min=this.response.list[32].main.temp_min-273;
+            this.day_4.temp_max=this.response.list[32].main.temp_max-273;
             this.day_4.weather_main=this.response.list[32].weather[0].main;
             this.day_4.date=this.response.list[32].dt_txt;
             this.img_weather(this.day_4);
